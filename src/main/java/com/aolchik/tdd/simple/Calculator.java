@@ -5,9 +5,14 @@ public class Calculator {
 		return this.result;
 	}
 
-	public void enter(double num) {
-		this.result = num;
+	public double enter(double num) {
+		return (this.result = num);
+	}
+
+	public double add(double numToAdd) {
+		return (this.result += numToAdd);
 	}
 
 	private double result;
+
 }
