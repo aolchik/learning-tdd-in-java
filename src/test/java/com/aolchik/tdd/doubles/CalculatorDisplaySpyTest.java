@@ -28,7 +28,7 @@ public class CalculatorDisplaySpyTest {
 		assertEquals("standard decimal separator", expected, actual);
 
 		// Code above was extracted to a method
-		verifyDisplayBehaviour("no standard thousand separator", 1000, "1000.00");
+		verifyDisplayBehaviour("standard thousand separator", 1000, "1,000.00");
 	}
 	
 	@Test
@@ -39,18 +39,15 @@ public class CalculatorDisplaySpyTest {
 		String decimalSeparator = ",";
 		display.setSeparators(thousandSeparator, decimalSeparator);
 
-		verifyDisplayBehaviour(display, mockedCalculator, "decimal separator change", 100, "100,0");
+		verifyDisplayBehaviour(display, mockedCalculator, "decimal separator change", 100, "100,00");
 		
-//		calc.enter(1000.0);
-//		assertEquals("single thousand separator", "1.000,0", display.show());
-//
-//		calc.enter(1000000000.0);
-//		assertEquals("multiple thousand separators", "1.000.000.000,0", 
-//				display.show());
-//
-//		calc.enter(-45000.0);
-//		assertEquals("thousand separator on negative numbers", "-45.000,0",
-//				display.show());
+		
+		// Code above was extracted to a method
+		verifyDisplayBehaviour("single thousand separator", 1000, ".", ",", "1.000,00");
+
+		verifyDisplayBehaviour("multiple thousand separators", 1000000000, ".", ",", "1.000.000.000,00");
+
+		verifyDisplayBehaviour("thousand separator on negativa numbers", -45000, ".", ",", "-45.000,00");
 	}
 
 	@Ignore
@@ -77,6 +74,17 @@ public class CalculatorDisplaySpyTest {
 		fail("Not yet implemented");
 	}
 
+	private void verifyDisplayBehaviour(String behaviour, double resultToInject, String thousandSeparator, 
+			String decimalSeparator, String expectedResult) {
+		Calculator mockedCalculator = mock(Calculator.class);
+		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
+
+		display.setSeparators(thousandSeparator, decimalSeparator);
+		
+		verifyDisplayBehaviour(display, mockedCalculator, behaviour, resultToInject, expectedResult);
+	}
+	
+	
 	private void verifyDisplayBehaviour(String behaviour, double resultToInject, String expectedResult) {
 		Calculator mockedCalculator = mock(Calculator.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
@@ -90,7 +98,7 @@ public class CalculatorDisplaySpyTest {
 		String actual = display.show();		
 		
 		verify(mockedCalculator).result();
-		assertEquals("standard decimal separator", expectedResult, actual);
+		assertEquals(behaviour, expectedResult, actual);
 	}
 
 }
