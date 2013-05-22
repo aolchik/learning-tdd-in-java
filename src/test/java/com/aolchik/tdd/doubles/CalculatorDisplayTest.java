@@ -9,7 +9,7 @@ import org.junit.Test;
 public class CalculatorDisplayTest {
 
 	@Test
-	public void showsThousandsSeparatorUsingStubs() {
+	public void showsSeparatorsUsingStubs() {
 
 		class StubCalculator implements Calculator {
 			public double result() {
@@ -26,43 +26,81 @@ public class CalculatorDisplayTest {
 		StubCalculator calc = new StubCalculator();
 		CalculatorDisplay display = new CalculatorDisplay((Calculator) calc);
 
-		display.setThousandSeparator('.');
-		calc.enter(100);
-		assertEquals("no thousand separator", display.show(), "100");
+		calc.enter(100.0);
+		assertEquals("standard decimal separator", "100.0", display.show());
 
-		calc.enter(1000);
-		assertEquals("single thousand separator", display.show(), "1.000");
+		calc.enter(1000.0);
+		assertEquals("no standard thousand separator", "1000.0", display.show());
 
-		calc.enter(1000000000);
-		assertEquals("multiple thousand separators", display.show(),
-				"1.000.000.000");
+		
+		String thousandSeparator = ".";
+		String decimalSeparator = ",";
+		display.setSeparators(thousandSeparator, decimalSeparator);
 
-		calc.enter(-45000);
-		assertEquals("thousand separator on negative numbers", display.show(),
-				"-45.000");
+		calc.enter(100.0);
+		assertEquals("decimal separator change", "100,0", display.show());
+		
+		calc.enter(1000.0);
+		assertEquals("single thousand separator", "1.000,0", display.show());
+
+		calc.enter(1000000000.0);
+		assertEquals("multiple thousand separators", "1.000.000.000,0", 
+				display.show());
+
+		calc.enter(-45000.0);
+		assertEquals("thousand separator on negative numbers", "-45.000,0",
+				display.show());
 	}
+
 
 	@Ignore
 	@Test
-	public void showsDecimalSeparator() {
+	public void showsSeparatorsUsingMocks() {
 		fail("Not yet implemented");
 	}
 
 	@Ignore
 	@Test
-	public void roundsBySpecificNumberOfDigits() {
+	public void roundsBySpecificNumberOfDigitsUsingStubs() {
 		fail("Not yet implemented");
 	}
 
 	@Ignore
 	@Test
-	public void showsHexadecimalRepresentation() {
+	public void roundsBySpecificNumberOfDigitsUsingMocks() {
+		fail("Not yet implemented");
+	}
+
+	
+	@Ignore
+	@Test
+	public void showsHexadecimalRepresentationUsingStubs() {
 		fail("Not yet implemented");
 	}
 
 	@Ignore
 	@Test
-	public void showsDecimalRepresentation() {
+	public void showsHexadecimalRepresentationUsingMocks() {
 		fail("Not yet implemented");
 	}
+
+	@Ignore
+	@Test
+	public void showsBinaryRepresentationUsingMocks() {
+		fail("Not yet implemented");
+	}
+
+	@Ignore
+	@Test
+	public void showsScientificRepresentationUsingStubs() {
+		fail("Not yet implemented");
+	}
+	
+	@Ignore
+	@Test
+	public void showsScientificRepresentationUsingMocks() {
+		fail("Not yet implemented");
+	}
+
+
 }

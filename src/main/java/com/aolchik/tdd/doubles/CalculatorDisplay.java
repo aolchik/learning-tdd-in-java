@@ -8,10 +8,17 @@ public class CalculatorDisplay {
 		this.calculator = calc;
 	}
 	
-	public void setThousandSeparator(char separator) {}
+	public void setSeparators(String thousands, String decimals) {
+		this.thousandSeparator = thousands;
+		this.decimalSeparator = decimals;
+	}
 	
-	public String show() { return "Error"; }
+	public String show() { 
+		return String.valueOf(calculator.result());
+	}
 
 	private Calculator calculator;
+	private String thousandSeparator;
+	private String decimalSeparator;
 	
 }
