@@ -10,7 +10,7 @@ public class SimpleCalculatorTest {
 
 	@Before
 	public void setUp() {
-		this.calc = new SimpleCalculator();	
+		this.calc = new BasicCalculatorEngine();	
 	}
 	
 	@Test
@@ -61,5 +61,5 @@ public class SimpleCalculatorTest {
 	public void throwsExceptionOnDivisionByZero() { }
 	
 	private static final double deltaForDoubleComparison = 0;
-	private SimpleCalculator calc;	
+	private BasicCalculatorEngine calc;	
 }

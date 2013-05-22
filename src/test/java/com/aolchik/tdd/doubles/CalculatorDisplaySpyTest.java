@@ -7,14 +7,14 @@ import static org.mockito.Mockito.*;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com.aolchik.tdd.simple.Calculator;
+import com.aolchik.tdd.simple.CalculatorEngine;
 
 public class CalculatorDisplaySpyTest {
 
 	@Test
 	public void showsDefaultSeparator() {
 		// Arrange
-		Calculator mockedCalculator = mock(Calculator.class);
+		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
 		double resultToInject = 100;
 		String expected = "100.00";
@@ -33,7 +33,7 @@ public class CalculatorDisplaySpyTest {
 	
 	@Test
 	public void showsAlternateSeparators() {
-		Calculator mockedCalculator = mock(Calculator.class);
+		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);		
 		String thousandSeparator = ".";
 		String decimalSeparator = ",";
@@ -76,7 +76,7 @@ public class CalculatorDisplaySpyTest {
 
 	private void verifyDisplayBehaviour(String behaviour, double resultToInject, String thousandSeparator, 
 			String decimalSeparator, String expectedResult) {
-		Calculator mockedCalculator = mock(Calculator.class);
+		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
 
 		display.setSeparators(thousandSeparator, decimalSeparator);
@@ -86,13 +86,13 @@ public class CalculatorDisplaySpyTest {
 	
 	
 	private void verifyDisplayBehaviour(String behaviour, double resultToInject, String expectedResult) {
-		Calculator mockedCalculator = mock(Calculator.class);
+		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
 		
 		verifyDisplayBehaviour(display, mockedCalculator, behaviour, resultToInject, expectedResult);
 	}
 	
-	private void verifyDisplayBehaviour(CalculatorDisplay display, Calculator mockedCalculator, String behaviour, double resultToInject, String expectedResult) {	
+	private void verifyDisplayBehaviour(CalculatorDisplay display, CalculatorEngine mockedCalculator, String behaviour, double resultToInject, String expectedResult) {	
 		when(mockedCalculator.result()).thenReturn(resultToInject);
 		
 		String actual = display.show();		

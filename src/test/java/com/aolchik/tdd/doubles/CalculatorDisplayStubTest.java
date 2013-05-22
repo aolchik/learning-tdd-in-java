@@ -1,7 +1,7 @@
 package com.aolchik.tdd.doubles;
 
 import static org.junit.Assert.*;
-import com.aolchik.tdd.simple.Calculator;
+import com.aolchik.tdd.simple.CalculatorEngine;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -12,7 +12,7 @@ public class CalculatorDisplayStubTest {
 	@Before
 	public void setUp() {
 		this.calc = new StubCalculator();
-		this.display = new CalculatorDisplay((Calculator) calc);
+		this.display = new CalculatorDisplay((CalculatorEngine) calc);
 	}
 	
 	@Test
@@ -75,7 +75,7 @@ public class CalculatorDisplayStubTest {
 	private CalculatorDisplay display;
 	private StubCalculator calc;
 	
-	class StubCalculator implements Calculator {
+	class StubCalculator implements CalculatorEngine {
 		public double result() {
 			return this.desiredResult;
 		}

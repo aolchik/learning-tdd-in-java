@@ -3,11 +3,11 @@ package com.aolchik.tdd.doubles;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-import com.aolchik.tdd.simple.Calculator;
+import com.aolchik.tdd.simple.CalculatorEngine;
 
 public class CalculatorDisplay {
 	
-	public CalculatorDisplay (Calculator calc) {
+	public CalculatorDisplay (CalculatorEngine calc) {
 		this.calculator = calc;
 		
 		setSeparators(DEFAULT_THOUSAND_SEPARATOR, DEFAULT_DECIMAL_SEPARATOR);
@@ -25,7 +25,7 @@ public class CalculatorDisplay {
 	private static final String DEFAULT_DECIMAL_SEPARATOR = ".";
 	private static final String DEFAULT_THOUSAND_SEPARATOR = ",";
 	
-	private Calculator calculator;
+	private CalculatorEngine calculator;
 	private DecimalFormat formatter;
 
 	private void setFormatter(String formattingPattern, String thousands, String decimalSeparator) {
