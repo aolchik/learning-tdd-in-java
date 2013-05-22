@@ -1,18 +1,9 @@
 package com.aolchik.tdd.simple;
 
-public class Calculator {
-	public double result() {
-		return this.result;
-	}
+public interface Calculator {
 
-	public double enter(double num) {
-		return (this.result = num);
-	}
+	double result();
 
-	public double add(double numToAdd) {
-		return (this.result += numToAdd);
-	}
-
-	private double result;
-
+	double enter(double num);
+	
 }
