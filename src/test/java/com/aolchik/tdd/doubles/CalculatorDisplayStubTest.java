@@ -17,7 +17,6 @@ public class CalculatorDisplayStubTest {
 	
 	@Test
 	public void showsDefaultSeparator() {
-
 		calc.enter(100.0);
 		assertEquals("standard decimal separator", "100.0", display.show());
 
