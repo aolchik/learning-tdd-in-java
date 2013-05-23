@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class ConfigurationFileTest {
 
+	@Ignore
 	@Test
 	public void readPropertiesAndSetupCalculator() {
 		// This kind of integration test can be used
