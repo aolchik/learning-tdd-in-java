@@ -13,6 +13,9 @@ public class CalculatorDisplaySpyTest {
 
 	@Test
 	public void showsDefaultSeparator() {
+		// How to write a test when we still don't know the underlying technology enough?
+		// spike! (i.e. using a separate folder or using a new branch)
+		
 		// Arrange
 		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
