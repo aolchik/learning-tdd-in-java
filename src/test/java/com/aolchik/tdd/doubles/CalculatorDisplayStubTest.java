@@ -1,11 +1,12 @@
 package com.aolchik.tdd.doubles;
 
 import static org.junit.Assert.*;
-import com.aolchik.tdd.simple.CalculatorEngine;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import com.aolchik.tdd.simple.CalculatorEngine;
+
 
 public class CalculatorDisplayStubTest {
 
@@ -18,10 +19,10 @@ public class CalculatorDisplayStubTest {
 	@Test
 	public void showsDefaultSeparator() {
 		calc.enter(100.0);
-		assertEquals("standard decimal separator", "100.0", display.show());
+		assertEquals("standard decimal separator", "100.00", display.show());
 
 		calc.enter(1000.0);
-		assertEquals("no standard thousand separator", "1000.0", display.show());
+		assertEquals("no standard thousand separator", "1,000.00", display.show());
 	}
 		
 	@Ignore
