@@ -14,11 +14,13 @@ public class PersistedPropertiesCalculator {
 	}
 	
 	public void saveProperties() {
-		assert true : "Not yet implemented!";
+		// Fail fast strategy.
+		// By default maven executes with assertion enabled (options -ea)
+		assert false : "Not yet implemented!";
 	}
 	
 	public Properties getProperties() {
-		assert true : "Not yet implemented!";
+		assert false : "Not yet implemented!";
 		return null;
 	}
 	
