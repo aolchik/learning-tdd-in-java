@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class SimpleCalculatorTest {
+public class BasicCalculatorEngineTest {
 
 	@Before
 	public void setUp() {
@@ -21,10 +21,10 @@ public class SimpleCalculatorTest {
 		double num = 25.35;
 
 		// Act, Assert
-		assertEquals("throught enter", calc.enter(num), num, deltaForDoubleComparison);		
+		assertEquals("through enter", num, calc.enter(num), deltaForDoubleComparison);		
 			// message  to easily find where the test break
 		
-		assertEquals("throught result", calc.result(), num, deltaForDoubleComparison);		
+		assertEquals("through result", num, calc.result(), deltaForDoubleComparison);		
 	
 		// Reset
 	}
@@ -36,8 +36,8 @@ public class SimpleCalculatorTest {
 		double numToAdd1 = 33.23;
 		double numToAdd2 = 21.2134;
 		
-		assertEquals("initial add", calc.add(numToAdd1), numToAdd1, deltaForDoubleComparison);
-		assertEquals("cumulative add", calc.add(numToAdd2), numToAdd1 + numToAdd2, deltaForDoubleComparison);
+		assertEquals("initial add", numToAdd1, calc.add(numToAdd1), deltaForDoubleComparison);
+		assertEquals("cumulative add", numToAdd1 + numToAdd2, calc.add(numToAdd2), deltaForDoubleComparison);
 	}
 		
 	@Ignore
