@@ -34,7 +34,8 @@ public class CalculatorDisplay {
 		DecimalFormatSymbols dfs = new DecimalFormatSymbols();
 		dfs.setDecimalSeparator(decimalSeparator.charAt(0));
 		assert(decimalSeparator.length() == 1) : "Decimal separator has more than one character!";
-
+		// Write your code to fail fast!
+		
 		if(thousands != null && thousands.length() > 0) {
 			dfs.setGroupingSeparator(thousands.charAt(0));
 			assert(thousands.length() == 1) : "Thousand separator has more than one character!";
