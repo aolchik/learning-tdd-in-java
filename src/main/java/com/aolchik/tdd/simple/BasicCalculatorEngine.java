@@ -14,6 +14,11 @@ public class BasicCalculatorEngine implements CalculatorEngine {
 		return (this.result += numToAdd);
 	}
 
+	public double multiply(double numToMultiply) {
+		return (this.result *= numToMultiply);
+	}
+
 	private double result;
+
 
 }
