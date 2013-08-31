@@ -21,10 +21,12 @@ public class BasicCalculatorEngineTest {
 		double num = 25.35;
 
 		// Act, Assert
-		assertEquals("through enter", num, calc.enter(num), deltaForDoubleComparison);		
-			// message  to easily find where the test break
+		assertEquals("through enter", num, calc.enter(num), 
+				deltaForDoubleComparison);		
+			// message to easily find where the test breaks
 		
-		assertEquals("through result", num, calc.result(), deltaForDoubleComparison);		
+		assertEquals("through result", num, calc.result(), 
+				deltaForDoubleComparison);		
 	
 		// Reset
 	}
@@ -36,9 +38,12 @@ public class BasicCalculatorEngineTest {
 		double numToAdd1 = 33.23;
 		double numToAdd2 = 21.2134;
 		
-		assertEquals("initial add", numToAdd1, calc.add(numToAdd1), deltaForDoubleComparison);
-		assertEquals("cumulative add", numToAdd1 + numToAdd2, calc.add(numToAdd2), deltaForDoubleComparison);
-		assertEquals("stores result", numToAdd1 + numToAdd2, calc.result(), deltaForDoubleComparison);
+		assertEquals("initial add", numToAdd1, 
+				calc.add(numToAdd1), deltaForDoubleComparison);
+		assertEquals("cumulative add", numToAdd1 + numToAdd2, 
+				calc.add(numToAdd2), deltaForDoubleComparison);
+		assertEquals("stores result", numToAdd1 + numToAdd2, 
+				calc.result(), deltaForDoubleComparison);
 	}
 		
 
@@ -49,8 +54,10 @@ public class BasicCalculatorEngineTest {
 		
 		calc.enter(num1);
 		
-		assertEquals("as multiply return", num1 * num2, calc.multiply(num2), deltaForDoubleComparison);
-		assertEquals("stores result", num1 * num2, calc.result(), deltaForDoubleComparison);
+		assertEquals("as multiply return", num1 * num2, 
+				calc.multiply(num2), deltaForDoubleComparison);
+		assertEquals("stores result", num1 * num2, 
+				calc.result(), deltaForDoubleComparison);
 	}
 	
 	@Ignore
