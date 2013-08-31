@@ -25,5 +25,7 @@ public class PersistedPropertiesCalculator {
 	}
 	
 	private CalculatorEngine calc;
+	
+	@SuppressWarnings("unused")
 	private CalculatorDisplay display;
 }
