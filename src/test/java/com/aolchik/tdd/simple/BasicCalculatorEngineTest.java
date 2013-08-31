@@ -30,7 +30,7 @@ public class BasicCalculatorEngineTest {
 	}
 	
 	@Test
-	public void shouldMultiply() {
+	public void shouldAdd() {
 		// BDD style name
 		
 		double numToAdd1 = 33.23;
@@ -38,11 +38,20 @@ public class BasicCalculatorEngineTest {
 		
 		assertEquals("initial add", numToAdd1, calc.add(numToAdd1), deltaForDoubleComparison);
 		assertEquals("cumulative add", numToAdd1 + numToAdd2, calc.add(numToAdd2), deltaForDoubleComparison);
+		assertEquals("stores result", numToAdd1 + numToAdd2, calc.result(), deltaForDoubleComparison);
 	}
 		
-	@Ignore
+
 	@Test
-	public void multiplies() { }
+	public void multiplies() { 
+		double num1 = 3;
+		double num2 = 6;
+		
+		calc.enter(num1);
+		
+		assertEquals("as multiply return", num1 * num2, calc.multiply(num2), deltaForDoubleComparison);
+		assertEquals("stores result", num1 * num2, calc.result(), deltaForDoubleComparison);
+	}
 	
 	@Ignore
 	@Test
