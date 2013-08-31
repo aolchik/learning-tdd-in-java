@@ -66,7 +66,7 @@ public class CalculatorDisplaySpyTest {
 
 	@Ignore
 	@Test
-	public void roundsBySpecificNumberOfDigits() {
+	public void showSpecificNumberOfDecimals() {
 		fail("Not yet implemented");
 	}
 
