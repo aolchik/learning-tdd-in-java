@@ -28,10 +28,10 @@ public class CalculatorDisplaySpyTest {
 		
 		// Assert
 		verify(mockedCalculator).result();
-		assertEquals("standard decimal separator", expected, actual);
+		assertEquals("standard decimal separator:", expected, actual);
 
 		// Code above was extracted to a method
-		verifyDisplayBehaviour("standard thousand separator", 1000, "1,000.00");
+		verifyStandardDisplayBehaviour("standard thousand separator:", 1000, "1,000.00");
 	}
 	
 	@Test
@@ -54,13 +54,13 @@ public class CalculatorDisplaySpyTest {
 		assertEquals("decimal separator change", expected, actual);
 		
 		// Code above was extracted to a single method
-		verifyDisplayBehaviour("single thousand separator", 
+		verifyNonStandardDisplayBehaviour("single thousand separator", 
 				1000, ".", ",", "1.000,00");
 
-		verifyDisplayBehaviour("multiple thousand separators", 
+		verifyNonStandardDisplayBehaviour("multiple thousand separators", 
 				1000000000, ".", ",", "1.000.000.000,00");
 
-		verifyDisplayBehaviour("thousand separator on negative numbers", 
+		verifyNonStandardDisplayBehaviour("thousand separator on negative numbers", 
 				-45000, ".", ",", "-45.000,00");
 	}
 
@@ -88,25 +88,25 @@ public class CalculatorDisplaySpyTest {
 		fail("Not yet implemented");
 	}
 
-	private void verifyDisplayBehaviour(String behaviour, double resultToInject, 
+	private void verifyNonStandardDisplayBehaviour(String behaviour, double resultToInject, 
 			String thousandSeparator, String decimalSeparator, String expectedResult) {
 		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
 
 		display.setSeparators(thousandSeparator, decimalSeparator);
 		
-		verifyDisplayBehaviour(display, mockedCalculator, behaviour, resultToInject, expectedResult);
+		verifyDisplayBehaviourUsingMockedCalculator(display, mockedCalculator, behaviour, resultToInject, expectedResult);
 	}
 	
-	private void verifyDisplayBehaviour(String behaviour, double resultToInject, 
+	private void verifyStandardDisplayBehaviour(String behaviour, double resultToInject, 
 			String expectedResult) {
 		CalculatorEngine mockedCalculator = mock(CalculatorEngine.class);
 		CalculatorDisplay display = new CalculatorDisplay(mockedCalculator);
 		
-		verifyDisplayBehaviour(display, mockedCalculator, behaviour, resultToInject, expectedResult);
+		verifyDisplayBehaviourUsingMockedCalculator(display, mockedCalculator, behaviour, resultToInject, expectedResult);
 	}
 	
-	private void verifyDisplayBehaviour(CalculatorDisplay display, 
+	private void verifyDisplayBehaviourUsingMockedCalculator(CalculatorDisplay display, 
 			CalculatorEngine mockedCalculator, String behaviour, 
 			double resultToInject, String expectedResult) {	
 		when(mockedCalculator.result()).thenReturn(resultToInject);
